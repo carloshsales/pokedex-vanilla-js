@@ -1,2 +1,3 @@
-# pokedex-vanilla-js
-pokedex with html5, css3 and vanilla js
+# Pokedex vanilla JavaScript implementation
+
+Pokedex with HTML5, CSS3 and vanilla JS
