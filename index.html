@@ -5,6 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="./assets/css/main.css" />
+		<link rel="stylesheet" href="./assets/css/type.css" />
 		<title>Pokedex</title>
 	</head>
 	<body>
@@ -14,7 +15,12 @@
 
 		<nav>
 			<ul>
-				<li><a href="/">ALL</a></li>
+				<li id="btn-previous" class="btn">Prev page</li>
+				<li>
+					<input type="text" placeholder="Enter a name or ID" />
+					<button id="search-btn" class="btn">Search</button>
+				</li>
+				<li id="btn-next" class="btn">Next page</li>
 			</ul>
 		</nav>
 

@@ -1,8 +1,9 @@
+
 async function apiPokemon(API) {
     let response = await fetch(API);
     let dataPoke = await response.json();
 
-    return await dataPoke;
+    return dataPoke;
 }
 
 export { apiPokemon }

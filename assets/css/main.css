@@ -3,10 +3,11 @@
 
 :root {
 	--font-color: #2c2c2c;
-	--font-color-sec: #cccccc;
-	--red-color: #fa4829;
+	--font-color-sec: #dbdbdb;
+	--red-color: #8b0000;
 	--yellow-color: #ffff00;
 	--blue-color: #00367e;
+	--bg-color: #1c1c1c;
 }
 
 * {
@@ -19,7 +20,6 @@
 	font-size: 14px;
 	font-weight: 500;
 	font-family: "Turret Road", sans-serif;
-	color: var(--font-color);
 }
 
 body,
@@ -35,22 +35,32 @@ header {
 }
 
 header h1 {
-	margin-top: 2rem;
+	margin-top: 1.2rem;
+}
+
+input {
+	background-color: var(--font-color);
+	padding: 0.4rem 1rem;
 }
 
 nav * {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-direction: row;
 	color: var(--font-color-sec);
 }
 
 main {
 	width: 80%;
 	height: 80vh;
-	background-color: var(--font-color);
+	background-color: var(--bg-color);
 	margin: auto;
-	border: 0.2rem solid var(--font-color-sec);
+	border: 0.3rem solid var(--font-color);
 	box-shadow: var(--font-color-sec) 0px 1rem 2rem -12px inset,
 		var(--font-color-sec) 0px 0.5rem 1.5rem -12px inset;
 	padding: 1.5rem 0;
+	border-radius: 0.3rem;
 }
 
 #container-wrapper {
@@ -83,21 +93,51 @@ main {
 	-webkit-text-fill-color: var(--yellow-color);
 }
 
+.btn {
+	background-color: var(--blue-color);
+	border: 0.1rem solid var(--yellow-color);
+	width: 6rem;
+	height: 2rem;
+	margin: 0.5rem;
+	cursor: pointer;
+	transition: all 0.5s;
+	border-radius: 0.2rem;
+}
+
+.btn:hover {
+	background-color: var(--yellow-color);
+	border: 0.1rem solid var(--blue-color);
+	color: var(--font-color);
+	transition: all 0.5s;
+}
+
 .card {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
 	flex-direction: column;
-	width: 12rem;
-	height: 14rem;
+	width: 14rem;
+	height: 20rem;
 	border-radius: 0.2rem;
-	box-shadow: 0 0 0.5rem 0;
+	box-shadow: 0 0 0.5rem 0 var(--font-color-sec);
+	background-color: var(--font-color);
+	transition: 0.5s;
+}
+
+.card:hover {
+	transition: 0.5s;
 	background-color: var(--font-color-sec);
+	color: var(--font-color);
+	cursor: pointer;
+	border: 0.2rem solid var(--font-color);
 }
 
 .card-title {
 	font-family: "Press Start 2P", sans-serif;
-	font-size: 1rem;
+	font-size: 1.2rem;
+	-webkit-text-stroke-width: 0.06rem;
+	-webkit-text-stroke-color: var(--blue-color);
+	-webkit-text-fill-color: var(--yellow-color);
 }
 
 .card-img {
