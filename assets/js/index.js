@@ -1,25 +1,24 @@
 import { apiPokemon } from "./api.js";
 
 let baseUrl = 'https://pokeapi.co/api/v2/pokemon/';
-let pageUrl = `https://pokeapi.co/api/v2/pokemon?offset=0&limit=100`;
+let pageUrl = `https://pokeapi.co/api/v2/pokemon?offset=0&limit=50`;
 
 let pokemonPage = await apiPokemon(pageUrl);
 
-
+console.log(pokemonPage)
 
 for (let i = 0; i < pokemonPage.results.length; i++) {
 
     let pokemonName = pokemonPage.results[i].name;
     let pokemonFeature = await apiPokemon(`${baseUrl}${pokemonName}`);
 
+
     const container = document.querySelector('#container-wrapper');
-    let cards = document.createElement('div');
-    let cardsImage = document.createElement('img');
-    let cardsTitle = document.createElement('h1');
-    let cardsId = document.createElement('h1');
-    let pokemonIndex = pokemonFeature['id'];
-
-
+    const cards = document.createElement('div');
+    const cardsImage = document.createElement('img');
+    const cardsTitle = document.createElement('h1');
+    const cardsId = document.createElement('h1');
+    const pokemonIndex = pokemonFeature['id'];
 
     container.appendChild(cards);
     cards.appendChild(cardsId);
@@ -62,3 +61,13 @@ for (let i = 0; i < pokemonPage.results.length; i++) {
     });
 
 }
+
+const allCards = document.querySelectorAll('.card');
+const pop = document.querySelector('.pop-up');
+
+allCards.forEach((card) => {
+    card.addEventListener('click', () => {
+        console.log('Já está visível');
+        pop.style.visibility = 'visibility';
+    });
+});

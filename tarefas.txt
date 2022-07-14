@@ -1,0 +1,33 @@
+REFATORAR O CÓDIGO
+
+CRIAR FUNÇÃO PARA PAGES {
+    NEXT/PREVIOUS{
+        Ao clicar no button
+        chamar função de click
+        Limpar a main
+        E criar os novos pokemons
+    }
+}
+
+CRIAR FUNÇÃO DE PESQUISA SIMPLES POR NOME{
+    CAPITURAR O NAME POR INPUT{
+        Percorrer o array e mostrar o/os respectivos cards na tela
+    }
+}
+
+CRIAR POP UP{
+    Estudar sobre o BOM/DOM
+    Verificar funções de renderização de elementos html em pages estaticas
+}
+
+
+
+
+TRATAR ERROS DE FALTA DE DADOS/DATA NULL{
+    try{
+        sem imagem
+    }catch{
+        substituir tag img por um texto 
+        "Sprite muito linda que não pode ser vista por ser muito rara"
+    }
+}
