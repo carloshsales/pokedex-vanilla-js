@@ -6,6 +6,8 @@ CRIAR FUNÇÃO PARA PAGES {
         chamar função de click
         Limpar a main
         E criar os novos pokemons
+
+        (Utilizar set timeout para a atualização da page);
     }
 }
 
@@ -15,7 +17,7 @@ CRIAR FUNÇÃO DE PESQUISA SIMPLES POR NOME{
     }
 }
 
-CRIAR POP UP{
+CRIAR MODAL{
     Estudar sobre o BOM/DOM
     Verificar funções de renderização de elementos html em pages estaticas
 }
@@ -25,9 +27,8 @@ CRIAR POP UP{
 
 TRATAR ERROS DE FALTA DE DADOS/DATA NULL{
     try{
-        sem imagem
+        info === null
     }catch{
-        substituir tag img por um texto 
-        "Sprite muito linda que não pode ser vista por ser muito rara"
+        substituir a info por um texto 
     }
 }

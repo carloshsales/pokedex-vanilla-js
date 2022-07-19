@@ -20,7 +20,7 @@
 	border-style: none;
 	font-size: 14px;
 	font-weight: 500;
-	font-family: "Turret Road", sans-serif;
+	font-family: "press start 2P";
 }
 
 body,
@@ -53,7 +53,7 @@ nav * {
 }
 
 main {
-	width: 80%;
+	width: 90%;
 	height: 80vh;
 	background-color: var(--bg-color);
 	margin: auto;
@@ -62,6 +62,8 @@ main {
 		var(--font-color-sec) 0px 0.5rem 1.5rem -12px inset;
 	padding: 1.5rem 0;
 	border-radius: 0.3rem;
+	/* position: absolute; */
+	z-index: 0;
 }
 
 footer {
@@ -97,6 +99,13 @@ footer {
 	border: 0.1rem solid var(--blue-color);
 }
 
+.btn-more {
+	width: 2rem;
+	height: 2rem;
+	border-radius: 1rem;
+	cursor: pointer;
+}
+
 .title {
 	font-family: "Press Start 2P", "roboto";
 	font-size: 2.5rem;
@@ -104,6 +113,7 @@ footer {
 	-webkit-text-stroke-width: 0.15rem;
 	-webkit-text-stroke-color: var(--blue-color);
 	-webkit-text-fill-color: var(--yellow-color);
+	margin-bottom: 1rem;
 }
 
 .btn {
@@ -129,12 +139,13 @@ footer {
 	justify-content: space-around;
 	align-items: center;
 	flex-direction: column;
-	width: 14rem;
+	width: 16rem;
 	height: 20rem;
 	border-radius: 0.2rem;
 	box-shadow: 0 0 0.5rem 0 var(--font-color-sec);
 	background-color: var(--font-color);
 	transition: 0.5s;
+	padding: 0.8rem;
 }
 
 .card:hover {
@@ -143,9 +154,10 @@ footer {
 	color: var(--font-color);
 	cursor: pointer;
 	border: 0.2rem solid var(--font-color);
+	font-size: 0.1rem;
 }
 
-.card-title {
+.card-name {
 	font-family: "Press Start 2P", sans-serif;
 	font-size: 1.2rem;
 	-webkit-text-stroke-width: 0.06rem;
@@ -153,33 +165,121 @@ footer {
 	-webkit-text-fill-color: var(--yellow-color);
 }
 
+.card-name::first-letter {
+	text-transform: uppercase;
+}
+
+.card-id {
+	font-family: "Press Start 2P", sans-serif;
+	font-size: 1.2rem;
+	-webkit-text-stroke-width: 0.03rem;
+	-webkit-text-stroke-color: var(--yellow-color);
+	-webkit-text-fill-color: var(--red-color);
+}
+
 .card-img {
 	width: 80%;
 }
 
-.pop-up {
-	width: 75%;
+.card-img:hover {
+	width: 90%;
+}
+
+.modal {
+	width: 85%;
 	height: 75%;
 	position: absolute;
 	background-color: var(--bg-popup-color);
 	border-radius: 0.2rem;
-	border-top-left-radius: 1.8rem;
+	border-top-left-radius: 2rem;
 	visibility: hidden;
+	border: 0.3rem solid var(--bg-color);
 }
 
-.close-pop-up {
-	width: 6%;
-	height: 6%;
-	background-color: #8b0000;
+.close-modal {
+	width: 3rem;
+	height: 3rem;
+	margin: 0.2rem;
+	background-color: var(--red-color);
 	font-family: "Press Start 2P", "roboto";
 	font-size: 0.8rem;
 	text-align: center;
 	padding: 0.5rem;
-	border-radius: 1.8rem;
+	border-radius: 2rem;
 	cursor: pointer;
 	border: 0.2rem solid var(--bg-color);
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	position: fixed;
+}
+
+.card-modal {
+	width: 90%;
+	height: 85%;
+	border-radius: 1.6rem;
+	border: 0.2rem solid var(--bg-color);
+	margin: 3rem auto auto auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	background-color: var(--font-color);
+	overflow-y: auto;
+}
+
+.card-modal .card-name {
+	-webkit-text-stroke-color: var(--red-color);
+}
+
+.card-modal .card-name {
+	padding: 1rem;
+}
+
+.modal-img {
+	width: 16rem;
+	height: auto;
+	background-color: var(--font-color-sec);
+	border: 0.2rem solid var(--bg-color);
+	margin: 1rem 0;
+	border-radius: 0.5rem;
+}
+
+.modal-description {
+	font-size: 1.3rem;
+	color: var(--font-color-sec);
+	font-weight: 500;
+	border: 1px solid var(--yellow-color);
+	background-color: var(--blue-color);
+	padding: 1rem;
+	margin: 0 0.5rem;
+	border-radius: 0.5rem;
+	font-family: "press start 2P";
+}
+
+.modal-habitat {
+	padding: 0.5rem;
+	margin: 0 0 0.8rem 0;
+	color: var(--yellow-color);
+	background-color: var(--bg-color);
+	border: 0.2rem solid var(--font-color-sec);
+	font-size: 1.2rem;
+	border-radius: 0.5rem;
+	font-family: "press start 2P";
+}
+
+.show-more {
+	width: 90%;
+	height: 4rem;
+	background-color: var(--blue-color);
+	border: 1px solid var(--yellow-color);
+	color: var(--font-color-sec);
+	border-radius: 0.3rem;
+}
+
+.show-more:hover {
+	background-color: var(--yellow-color);
+	border: 1px solid var(--red-color);
+	color: var(--font-color);
+	border-radius: 0.3rem;
 }

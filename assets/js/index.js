@@ -1,24 +1,106 @@
-import { apiPokemon } from "./api.js";
+import { apiPokemon, pokemonFeatures, pokemonDescrition } from "./api.js";
 
-let baseUrl = 'https://pokeapi.co/api/v2/pokemon/';
-let pageUrl = `https://pokeapi.co/api/v2/pokemon?offset=0&limit=50`;
+const container = document.querySelector('#container-wrapper');
+let offset = 0;
+let urlPage = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=20`
 
-let pokemonPage = await apiPokemon(pageUrl);
+let pokemonPage = await apiPokemon(urlPage);
 
-console.log(pokemonPage)
+const btnMore = document.createElement('button');
+btnMore.className = 'show-more';
 
-for (let i = 0; i < pokemonPage.results.length; i++) {
+pages(pokemonPage);
+showMore()
 
-    let pokemonName = pokemonPage.results[i].name;
-    let pokemonFeature = await apiPokemon(`${baseUrl}${pokemonName}`);
+speciesDetails()
+
+function modalDetails(mod, cards) {
+    const cardModal = document.createElement('div');
+    const nameModal = document.createElement('h1');
+    const idModal = document.createElement('h1');
+    const imgModal = document.createElement('img');
+    const habitatModal = document.createElement('span');
+    const pModal = document.createElement('p');
 
 
-    const container = document.querySelector('#container-wrapper');
+    mod.appendChild(cardModal);
+    cardModal.appendChild(idModal);
+    cardModal.appendChild(nameModal);
+    cardModal.appendChild(imgModal);
+    cardModal.appendChild(habitatModal);
+    cardModal.appendChild(pModal);
+
+    idModal.innerText = cards.querySelector('.card-id').textContent
+    nameModal.innerText = cards.querySelector('.card-name').textContent
+    imgModal.src = cards.querySelector('.card-img').src
+
+    cardModal.className = 'card-modal';
+    idModal.className = 'card-id';
+    nameModal.className = 'card-name';
+    imgModal.className = 'modal-img';
+    pModal.className = 'modal-description';
+    habitatModal.className = 'modal-habitat';
+
+    let species = async () => {
+        let newId = idModal.textContent.replace('ID: ', '')
+        let data = await pokemonDescrition(newId);
+
+        pModal.innerText = `" ${data.flavor_text_entries[9].flavor_text.replace('é', 'E')} "`;
+        habitatModal.textContent = `HABITAT: ${data.habitat.name}`;
+
+        console.log(data);
+    }
+    species()
+}
+
+function showAndHiddenModal() {
+    const modal = document.querySelector('.modal');
+    const allCards = document.querySelectorAll('.card');
+    const closeModal = document.querySelector('.close-modal');
+
+    allCards.forEach((card) => {
+        card.onclick = () => {
+            modalDetails(modal, card);
+            modal.style.visibility = 'visible';
+        }
+    })
+
+    closeModal.addEventListener('click', () => {
+        modal.style.visibility = 'hidden';
+        document.querySelectorAll('.card-modal').forEach(card => {
+            card.style.display = 'none';
+        });
+    });
+}
+
+function showMore(btn) {
+    btn.onclick = async () => {
+        let next = await apiPokemon(pokemonPage.next);
+        pages(next)
+        pokemonPage = next;
+    }
+}
+
+function pages(page) {
+    if (document.querySelectorAll('.card') > 0) {
+        document.querySelectorAll('.card').style.display = 'none';
+    }
+    page.results.forEach(async item => {
+        let name = item.name;
+        let features = await pokemonFeatures(name);
+        let index = features.id;
+        let sprite = features.sprites['front_default'];
+        let types = features.types;
+
+        createCards(index, name, sprite, types);
+    });
+}
+
+function createCards(pokemonIndex, pokemonName, pokemonSprite, pokemonTypes) {
     const cards = document.createElement('div');
     const cardsImage = document.createElement('img');
     const cardsTitle = document.createElement('h1');
     const cardsId = document.createElement('h1');
-    const pokemonIndex = pokemonFeature['id'];
 
     container.appendChild(cards);
     cards.appendChild(cardsId);
@@ -27,15 +109,14 @@ for (let i = 0; i < pokemonPage.results.length; i++) {
 
     cards.className = 'card';
     cardsImage.className = 'card-img';
-    cardsTitle.className = 'card-title';
-    cardsId.className = 'card-title';
+    cardsTitle.className = 'card-name';
+    cardsId.className = 'card-id';
 
     cardsId.innerText = `ID: ${pokemonIndex}`;
-
     cardsTitle.innerText = `${pokemonName}`;
-    cardsImage.src = pokemonFeature.sprites['front_default'];
+    cardsImage.src = pokemonSprite;
 
-    pokemonFeature.types.forEach(element => {
+    pokemonTypes.forEach(element => {
         let cardType = document.createElement('span');
 
         cards.appendChild(cardType);
@@ -60,14 +141,12 @@ for (let i = 0; i < pokemonPage.results.length; i++) {
         });
     });
 
+    container.appendChild(btnMore);
+    btnMore.innerText = 'MORE'
+    showMore(btnMore)
+
+    showAndHiddenModal();
 }
 
-const allCards = document.querySelectorAll('.card');
-const pop = document.querySelector('.pop-up');
 
-allCards.forEach((card) => {
-    card.addEventListener('click', () => {
-        console.log('Já está visível');
-        pop.style.visibility = 'visibility';
-    });
-});
+
