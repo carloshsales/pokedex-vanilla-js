@@ -47,8 +47,6 @@ function modalDetails(mod, cards) {
 
         pModal.innerText = `" ${data.flavor_text_entries[9].flavor_text.replace('é', 'E')} "`;
         habitatModal.textContent = `HABITAT: ${data.habitat.name}`;
-
-        console.log(data);
     }
     species()
 }
@@ -82,9 +80,6 @@ function showMore(btn) {
 }
 
 function pages(page) {
-    if (document.querySelectorAll('.card') > 0) {
-        document.querySelectorAll('.card').style.display = 'none';
-    }
     page.results.forEach(async item => {
         let name = item.name;
         let features = await pokemonFeatures(name);
