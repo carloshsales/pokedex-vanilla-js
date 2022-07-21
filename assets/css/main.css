@@ -305,4 +305,8 @@ footer {
 	.modal {
 		width: 95%;
 	}
+
+	.card-modal .card-id {
+		padding-top: 5rem;
+	}
 }
