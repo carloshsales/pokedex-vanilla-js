@@ -296,17 +296,3 @@ footer {
 	color: var(--font-color);
 	border-radius: 0.3rem;
 }
-
-@media (max-width: 768px) {
-	main {
-		width: 98%;
-	}
-
-	.modal {
-		width: 95%;
-	}
-
-	.card-modal .card-id {
-		margin-top: 5rem;
-	}
-}

@@ -1,0 +1,38 @@
+@media (max-width: 768px) {
+	main {
+		width: 98%;
+	}
+
+	footer {
+		width: 98%;
+	}
+
+	.modal {
+		width: 95%;
+	}
+
+	.card-modal .card-id {
+		margin-top: 5rem;
+	}
+}
+
+@media (max-width: 400px) {
+	.card-modal {
+		padding-top: 12rem;
+		padding-bottom: 2rem;
+	}
+}
+
+@media (max-width: 300px) {
+	.card-modal {
+		padding-top: 19rem;
+		padding-bottom: 2rem;
+	}
+}
+
+@media (max-height: 650px) {
+	.card-modal {
+		padding-top: 16rem;
+		padding-bottom: 2rem;
+	}
+}

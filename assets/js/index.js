@@ -56,7 +56,7 @@ function showAndHiddenModal() {
     const allCards = document.querySelectorAll('.card');
     const closeModal = document.querySelector('.close-modal');
 
-    allCards.forEach((card) => {
+    allCards.forEach(card => {
         card.onclick = () => {
             modalDetails(modal, card);
             modal.style.visibility = 'visible';
